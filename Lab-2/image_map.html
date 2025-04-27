@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Image Map Demonstration</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 20px;
+            background-color: #ffffff;
+        }
+        .map-container {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+            border: 1px solid #ccc;
+        }
+        .map-description {
+            margin-top: 20px;
+            padding: 10px;
+            background-color: #f0f0f0;
+            border-radius: 5px;
+        }
+        .region-info {
+            margin-top: 20px;
+            padding: 10px;
+            background-color: #e0e0e0;
+            border-radius: 5px;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="map-container">
+        <h1>Image Map Demonstration</h1>    
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/80/World_map_-_low_resolution.svg/1200px-World_map_-_low_resolution.svg.png" alt="World Map" usemap="#worldmap">
+        <map name="worldmap">
+            <!-- North America -->
+            <area shape="poly" coords="100,100,150,50,200,100,150,150" href="#north-america" target="content" alt="North America">
+            <!-- Europe -->
+            <area shape="poly" coords="300,100,350,50,400,100,350,150" href="#europe" target="content" alt="Europe">
+            <!-- Asia -->
+            <area shape="poly" coords="500,100,550,50,600,100,550,150" href="#asia" target="content" alt="Asia">
+        </map>
+
+        <div id="north-america" class="region-info">
+            <h3>North America</h3>
+            <p>North America is a continent in the Northern Hemisphere and almost entirely within the Western Hemisphere.</p>
+        </div>
+
+        <div id="europe" class="region-info">
+            <h3>Europe</h3>
+            <p>Europe is a continent located entirely in the Northern Hemisphere and mostly in the Eastern Hemisphere.</p>
+        </div>
+
+        <div id="asia" class="region-info">
+            <h3>Asia</h3>
+            <p>Asia is Earth's largest and most populous continent, located primarily in the Eastern and Northern Hemispheres.</p>
+        </div>
+    </div>
+
+    <script>
+        // Show the selected region's information
+        document.querySelectorAll('area').forEach(area => {
+            area.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href').substring(1);
+                document.querySelectorAll('.region-info').forEach(info => {
+                    info.style.display = 'none';
+                });
+                document.getElementById(targetId).style.display = 'block';
+            });
+        });
+    </script>
+</body>
+</html> 

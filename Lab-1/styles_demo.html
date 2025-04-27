@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stylesheet Demonstration</title>
+    
+    <!-- External Stylesheet -->
+    <link rel="stylesheet" href="styles.css">
+    
+    <!-- Internal Stylesheet -->
+    <style>
+        /* This will override external stylesheet */
+        .box {
+            background-color: #e0e0e0;
+            border: 2px solid #333;
+        }
+        
+        /* This will be overridden by inline style */
+        #special-box {
+            color: blue;
+        }
+    </style>
+</head>
+<body>
+    <h1>Stylesheet Demonstration</h1>
+    
+    <div class="box">
+        <h2>Box with Class Selector</h2>
+        <p>This box uses class selector styling from internal stylesheet.</p>
+    </div>
+    
+    <div id="special-box" class="box" style="color: red; /* Inline style overriding internal style */">
+        <h2>Box with ID and Class Selectors</h2>
+        <p>This box demonstrates style overriding:
+            <ul>
+                <li>External stylesheet (basic styling)</li>
+                <li>Internal stylesheet (overrides external)</li>
+                <li>Inline style (overrides both)</li>
+            </ul>
+        </p>
+    </div>
+    
+    <div class="box special">
+        <h2>Multiple Class Selectors</h2>
+        <p>This box uses multiple class selectors (box and special).</p>
+    </div>
+</body>
+</html> 

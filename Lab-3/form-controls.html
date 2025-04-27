@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Google Forms Style Feedback</title>
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,500,700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            background: #f0ebf8;
+            font-family: 'Roboto', Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        .gform-header {
+            background: #673ab7;
+            height: 180px;
+            position: relative;
+        }
+        .gform-title-card {
+            background: #fff;
+            max-width: 640px;
+            margin: -100px auto 0 auto;
+            border-radius: 8px 8px 0 0;
+            box-shadow: 0 4px 16px rgba(60, 64, 67, 0.15);
+            padding: 32px 40px 24px 40px;
+            position: relative;
+            z-index: 2;
+        }
+        .gform-title {
+            font-size: 2.2rem;
+            font-weight: 500;
+            color: #202124;
+            margin-bottom: 8px;
+        }
+        .gform-desc {
+            color: #5f6368;
+            font-size: 1.1rem;
+            margin-bottom: 0;
+        }
+        .gform-form-card {
+            background: #fff;
+            max-width: 640px;
+            margin: 0 auto 40px auto;
+            border-radius: 0 0 8px 8px;
+            box-shadow: 0 4px 16px rgba(60, 64, 67, 0.15);
+            padding: 32px 40px 24px 40px;
+        }
+        .gform-section-title {
+            font-size: 1.2rem;
+            color: #202124;
+            font-weight: 500;
+            margin-bottom: 24px;
+        }
+        .gform-group {
+            margin-bottom: 28px;
+        }
+        .gform-label {
+            display: block;
+            font-size: 1rem;
+            color: #202124;
+            font-weight: 500;
+            margin-bottom: 6px;
+        }
+        .gform-required {
+            color: #d93025;
+            margin-left: 2px;
+        }
+        .gform-input, .gform-select, .gform-textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #dadce0;
+            border-radius: 4px;
+            font-size: 1rem;
+            background: #f8f9fa;
+            transition: border-color 0.2s, box-shadow 0.2s;
+            margin-top: 4px;
+        }
+        .gform-input:focus, .gform-select:focus, .gform-textarea:focus {
+            border-color: #673ab7;
+            background: #fff;
+            outline: none;
+            box-shadow: 0 0 0 2px #e9ddff;
+        }
+        .gform-checkbox-group, .gform-radio-group {
+            margin-top: 6px;
+        }
+        .gform-checkbox-group label, .gform-radio-group label {
+            font-weight: 400;
+            margin-right: 24px;
+            margin-bottom: 0;
+            cursor: pointer;
+        }
+        .gform-checkbox-group input[type="checkbox"], .gform-radio-group input[type="radio"] {
+            margin-right: 6px;
+            accent-color: #673ab7;
+        }
+        .gform-textarea {
+            min-height: 80px;
+            resize: vertical;
+        }
+        .gform-range-value {
+            display: inline-block;
+            min-width: 24px;
+            text-align: center;
+            color: #673ab7;
+            font-weight: 500;
+            margin-left: 8px;
+        }
+        .gform-submit-btn {
+            background: #673ab7;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            padding: 12px 32px;
+            font-size: 1.1rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: background 0.2s;
+            margin-top: 12px;
+            box-shadow: 0 2px 6px rgba(60, 64, 67, 0.08);
+        }
+        .gform-submit-btn:hover {
+            background: #5e35b1;
+        }
+        .gform-footer {
+            text-align: center;
+            color: #888;
+            font-size: 0.95em;
+            margin-bottom: 24px;
+        }
+        @media (max-width: 700px) {
+            .gform-title-card, .gform-form-card {
+                padding: 18px 8vw 18px 8vw;
+            }
+        }
+        @media (max-width: 480px) {
+            .gform-title-card, .gform-form-card {
+                padding: 12px 2vw 12px 2vw;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="gform-header"></div>
+    <div class="gform-title-card">
+        <div class="gform-title">Feedback Form</div>
+        <div class="gform-desc">Required fields are marked with <span class="gform-required">*</span></div>
+    </div>
+    <form class="gform-form-card" id="feedbackForm" autocomplete="off">
+        <div class="gform-section-title">Your Details</div>
+        <div class="gform-group">
+            <label class="gform-label" for="name">Full Name <span class="gform-required">*</span></label>
+            <input class="gform-input" type="text" id="name" name="name" maxlength="100" required>
+        </div>
+        <div class="gform-group">
+            <label class="gform-label" for="email">Email Address <span class="gform-required">*</span></label>
+            <input class="gform-input" type="email" id="email" name="email" maxlength="100" required>
+        </div>
+        <div class="gform-group">
+            <label class="gform-label" for="date">Date of Visit <span class="gform-required">*</span></label>
+            <input class="gform-input" type="date" id="date" name="date" required>
+        </div>
+        <div class="gform-group">
+            <label class="gform-label" for="service">Service Used <span class="gform-required">*</span></label>
+            <select class="gform-select" id="service" name="service" required>
+                <option value="" disabled selected>Select an option</option>
+                <option value="consulting">Consulting</option>
+                <option value="support">Support</option>
+                <option value="other">Other</option>
+            </select>
+        </div>
+        <div class="gform-section-title">Your Preferences</div>
+        <div class="gform-group">
+            <label class="gform-label">Hobbies</label>
+            <div class="gform-checkbox-group">
+                <label><input type="checkbox" name="hobbies" value="reading">Reading</label>
+                <label><input type="checkbox" name="hobbies" value="sports">Sports</label>
+                <label><input type="checkbox" name="hobbies" value="coding">Coding</label>
+            </div>
+        </div>
+        <div class="gform-group">
+            <label class="gform-label">Would you recommend us? <span class="gform-required">*</span></label>
+            <div class="gform-radio-group">
+                <label><input type="radio" name="recommend" value="yes" required>Yes</label>
+                <label><input type="radio" name="recommend" value="no">No</label>
+            </div>
+        </div>
+        <div class="gform-group">
+            <label class="gform-label" for="feedback">Feedback</label>
+            <textarea class="gform-textarea" id="feedback" name="feedback" maxlength="500" placeholder="Enter your feedback here..."></textarea>
+        </div>
+        <div class="gform-group">
+            <label class="gform-label" for="rating">Rate Our Services</label>
+            <input class="gform-input" type="range" id="rating" name="rating" min="1" max="10" step="1" value="5" oninput="document.getElementById('rangeValue').textContent = this.value;">
+            <span class="gform-range-value" id="rangeValue">5</span>
+        </div>
+        <div class="gform-group">
+            <label class="gform-label" for="color">Pick Your Favorite Color</label>
+            <input class="gform-input" type="color" id="color" name="color" value="#673ab7" style="padding:2px; height:40px; width:60px;">
+        </div>
+        <button class="gform-submit-btn" type="submit">Submit</button>
+    </form>
+    <div class="gform-footer">
+        Never submit passwords through Google Forms.<br>
+        This form is a clone for educational purposes.
+    </div>
+    <script>
+        // Show range value on load
+        document.getElementById('rangeValue').textContent = document.getElementById('rating').value;
+        // Optional: Confirmation message on submit
+        document.getElementById('feedbackForm').onsubmit = function(e) {
+            e.preventDefault();
+            this.style.display = 'none';
+            document.body.insertAdjacentHTML('beforeend', '<div style="max-width:640px;margin:40px auto;background:#fff;padding:40px 0;border-radius:8px;text-align:center;font-size:1.3rem;box-shadow:0 4px 16px rgba(60,64,67,0.15);color:#202124;">Thank you for your feedback!</div>');
+        };
+    </script>
+</body>
+</html> 
